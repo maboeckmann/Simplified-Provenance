@@ -1,0 +1,443 @@
+@prefix : 		<http://www.w3.org/ns/prov-o#> .
+@prefix rdf: 		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: 		<http://www.w3.org/2002/07/owl#> .
+@prefix xsd: 		<http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: 		<http://purl.org/dc/elements/1.1/#> .
+@prefix xml: 		<http://www.w3.org/XML/1998/namespace> .
+@base  				<http://www.w3.org/ns/prov-o> .
+
+
+<http://www.w3.org/ns/prov-o#> rdf:type owl:Ontology ;
+                               dc:title "undefined"@en;
+                               dc:description "undefined"@en;
+                               owl:versionInfo "Recommendation version 2013-04-30"@en . 
+#################################################################
+
+###  Property Definitions (Number of Property) 35 ###
+#  --------------------------- Property 0------------------------- 
+:qualifiedDerivation rdf:type owl:ObjectProperty ;
+                     rdfs:comment "If this Entity prov:wasDerivedFrom Entity :e, then it can qualify how it was derived using prov:qualifiedDerivation [ a prov:Derivation;  prov:entity :e; :foo :bar ]." ;
+                     rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                     rdfs:label "qualifiedDerivation"@IRI-based; 
+                     rdfs:label "qualifiedDerivation"@en; 
+                     rdfs:domain :Entity;
+                     rdfs:range :Derivation . 
+#  --------------------------- Property 1------------------------- 
+:wasStartedBy rdf:type owl:ObjectProperty ;
+              rdfs:comment "Start is when an activity is deemed to have started. A start may refer to an entity, known as trigger, that initiated the activity." ;
+              rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+              rdfs:label "wasStartedBy"@IRI-based; 
+              rdfs:label "wasStartedBy"@en; 
+              rdfs:domain :Activity;
+              rdfs:range :Entity . 
+#  --------------------------- Property 2------------------------- 
+:qualifiedEnd rdf:type owl:ObjectProperty ;
+              rdfs:comment "If this Activity prov:wasEndedBy Entity :e1, then it can qualify how it was ended using prov:qualifiedEnd [ a prov:End;  prov:entity :e1; :foo :bar ]." ;
+              rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+              rdfs:label "qualifiedEnd"@IRI-based; 
+              rdfs:label "qualifiedEnd"@en; 
+              rdfs:domain :Activity;
+              rdfs:range :End . 
+#  --------------------------- Property 3------------------------- 
+:wasAssociatedWith rdf:type owl:ObjectProperty ;
+                   rdfs:comment "An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity." ;
+                   rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                   rdfs:label "wasAssociatedWith"@IRI-based; 
+                   rdfs:label "wasAssociatedWith"@en; 
+                   rdfs:domain :Activity;
+                   rdfs:range :Agent . 
+#  --------------------------- Property 4------------------------- 
+:endedAtTime rdf:type owl:DatatypeProperty ;
+             rdfs:comment "The time at which an activity ended. See also prov:startedAtTime." ;
+             rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+             rdfs:label "endedAtTime"@IRI-based; 
+             rdfs:label "endedAtTime"@en; 
+             rdfs:domain :Activity;
+             rdfs:range xsd:dateTime . 
+#  --------------------------- Property 5------------------------- 
+:wasEndedBy rdf:type owl:ObjectProperty ;
+            rdfs:comment "End is when an activity is deemed to have ended. An end may refer to an entity, known as trigger, that terminated the activity." ;
+            rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+            rdfs:label "wasEndedBy"@IRI-based; 
+            rdfs:label "wasEndedBy"@en; 
+            rdfs:domain :Activity;
+            rdfs:range :Entity . 
+#  --------------------------- Property 6------------------------- 
+:generatedAtTime rdf:type owl:DatatypeProperty ;
+                 rdfs:comment "The time at which an entity was completely created and is available for use." ;
+                 rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                 rdfs:label "generatedAtTime"@IRI-based; 
+                 rdfs:label "generatedAtTime"@en; 
+                 rdfs:domain :Entity;
+                 rdfs:range xsd:dateTime . 
+#  --------------------------- Property 7------------------------- 
+:hadPrimarySource rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :wasDerivedFrom;
+                  rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                  rdfs:label "hadPrimarySource"@IRI-based; 
+                  rdfs:label "hadPrimarySource"@en; 
+                  rdfs:domain :Entity;
+                  rdfs:range :Entity . 
+#  --------------------------- Property 8------------------------- 
+:value rdf:type owl:DatatypeProperty ;
+       rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+       rdfs:label "value"@IRI-based; 
+       rdfs:label "value"@en; 
+       rdfs:domain :Entity;
+       rdfs:range rdfs:Literal . 
+#  --------------------------- Property 9------------------------- 
+:invalidated rdf:type owl:ObjectProperty; 
+             owl:inverseOf :wasInvalidatedBy ;
+             rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+             rdfs:label "invalidated"@IRI-based; 
+             rdfs:label "invalidated"@en; 
+             rdfs:domain :Activity;
+             rdfs:range :Entity . 
+#  --------------------------- Property 10------------------------- 
+:qualifiedDelegation rdf:type owl:ObjectProperty ;
+                     rdfs:comment "If this Agent prov:actedOnBehalfOf Agent :ag, then it can qualify how with prov:qualifiedResponsibility [ a prov:Responsibility;  prov:agent :ag; :foo :bar ]." ;
+                     rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                     rdfs:label "qualifiedDelegation"@IRI-based; 
+                     rdfs:label "qualifiedDelegation"@en; 
+                     rdfs:domain :Agent;
+                     rdfs:range :Delegation . 
+#  --------------------------- Property 11------------------------- 
+:hadGeneration rdf:type owl:ObjectProperty ;
+               rdfs:comment "The _optional_ Generation involved in an Entity's Derivation." ;
+               rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+               rdfs:label "hadGeneration"@IRI-based; 
+               rdfs:label "hadGeneration"@en; 
+               rdfs:domain :Derivation;
+               rdfs:range :Generation . 
+#  --------------------------- Property 12------------------------- 
+:startedAtTime rdf:type owl:DatatypeProperty ;
+               rdfs:comment "The time at which an activity started. See also prov:endedAtTime." ;
+               rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+               rdfs:label "startedAtTime"@IRI-based; 
+               rdfs:label "startedAtTime"@en; 
+               rdfs:domain :Activity;
+               rdfs:range xsd:dateTime . 
+#  --------------------------- Property 13------------------------- 
+:wasDerivedFrom rdf:type owl:ObjectProperty ;
+                rdfs:comment "The more specific subproperties of prov:wasDerivedFrom (i.e., prov:wasQuotedFrom, prov:wasRevisionOf, prov:hadPrimarySource) should be used when applicable." ;
+                rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                rdfs:label "wasDerivedFrom"@IRI-based; 
+                rdfs:label "wasDerivedFrom"@en; 
+                rdfs:domain :Entity;
+                rdfs:range :Entity . 
+#  --------------------------- Property 14------------------------- 
+:wasQuotedFrom rdf:type owl:ObjectProperty ;
+               rdfs:comment "An entity is derived from an original entity by copying, or 'quoting', some or all of it." ;
+              rdfs:subPropertyOf :wasDerivedFrom;
+               rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+               rdfs:label "wasQuotedFrom"@IRI-based; 
+               rdfs:label "wasQuotedFrom"@en; 
+               rdfs:domain :Entity;
+               rdfs:range :Entity . 
+#  --------------------------- Property 15------------------------- 
+:atTime rdf:type owl:DatatypeProperty ;
+        rdfs:comment "The time at which an InstantaneousEvent occurred, in the form of xsd:dateTime." ;
+        rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+        rdfs:label "atTime"@IRI-based; 
+        rdfs:label "atTime"@en; 
+        rdfs:domain :InstantaneousEvent;
+        rdfs:range xsd:dateTime . 
+#  --------------------------- Property 16------------------------- 
+:used rdf:type owl:ObjectProperty ;
+      rdfs:comment "A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven ." ;
+      rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+      rdfs:label "used"@IRI-based; 
+      rdfs:label "used"@en; 
+      rdfs:domain :Activity;
+      rdfs:range :Entity . 
+#  --------------------------- Property 17------------------------- 
+:hadUsage rdf:type owl:ObjectProperty ;
+          rdfs:comment "The _optional_ Usage involved in an Entity's Derivation." ;
+          rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+          rdfs:label "hadUsage"@IRI-based; 
+          rdfs:label "hadUsage"@en; 
+          rdfs:domain :Derivation;
+          rdfs:range :Usage . 
+#  --------------------------- Property 18------------------------- 
+:wasInvalidatedBy rdf:type owl:ObjectProperty; 
+                  owl:inverseOf :invalidated ;
+                  rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                  rdfs:label "wasInvalidatedBy"@IRI-based; 
+                  rdfs:label "wasInvalidatedBy"@en; 
+                  rdfs:domain :Entity;
+                  rdfs:range :Activity . 
+#  --------------------------- Property 19------------------------- 
+:qualifiedStart rdf:type owl:ObjectProperty ;
+                rdfs:comment "If this Activity prov:wasStartedBy Entity :e1, then it can qualify how it was started using prov:qualifiedStart [ a prov:Start;  prov:entity :e1; :foo :bar ]." ;
+                rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                rdfs:label "qualifiedStart"@IRI-based; 
+                rdfs:label "qualifiedStart"@en; 
+                rdfs:domain :Activity;
+                rdfs:range :Start . 
+#  --------------------------- Property 20------------------------- 
+:qualifiedAssociation rdf:type owl:ObjectProperty ;
+                      rdfs:comment "If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association;  prov:agent :ag; :foo :bar ]." ;
+                      rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                      rdfs:label "qualifiedAssociation"@IRI-based; 
+                      rdfs:label "qualifiedAssociation"@en; 
+                      rdfs:domain :Activity;
+                      rdfs:range :Association . 
+#  --------------------------- Property 21------------------------- 
+:alternateOf rdf:type owl:ObjectProperty ;
+             rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+             rdfs:label "alternateOf"@IRI-based; 
+             rdfs:label "alternateOf"@en; 
+             rdfs:domain :Entity;
+             rdfs:range :Entity . 
+#  --------------------------- Property 22------------------------- 
+:qualifiedUsage rdf:type owl:ObjectProperty ;
+                rdfs:comment "If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualifiedUsage [ a prov:Usage; prov:entity :e; :foo :bar ]." ;
+                rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                rdfs:label "qualifiedUsage"@IRI-based; 
+                rdfs:label "qualifiedUsage"@en; 
+                rdfs:domain :Activity;
+                rdfs:range :Usage . 
+#  --------------------------- Property 23------------------------- 
+:invalidatedAtTime rdf:type owl:DatatypeProperty ;
+                   rdfs:comment "The time at which an entity was invalidated (i.e., no longer usable)." ;
+                   rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                   rdfs:label "invalidatedAtTime"@IRI-based; 
+                   rdfs:label "invalidatedAtTime"@en; 
+                   rdfs:domain :Entity;
+                   rdfs:range xsd:dateTime . 
+#  --------------------------- Property 24------------------------- 
+:wasInformedBy rdf:type owl:ObjectProperty ;
+               rdfs:comment "An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2." ;
+               rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+               rdfs:label "wasInformedBy"@IRI-based; 
+               rdfs:label "wasInformedBy"@en; 
+               rdfs:domain :Activity;
+               rdfs:range :Activity . 
+#  --------------------------- Property 25------------------------- 
+:qualifiedGeneration rdf:type owl:ObjectProperty ;
+                     rdfs:comment "If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation;  prov:entity :e; :foo :bar ]." ;
+                     rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                     rdfs:label "qualifiedGeneration"@IRI-based; 
+                     rdfs:label "qualifiedGeneration"@en; 
+                     rdfs:domain :Entity;
+                     rdfs:range :Generation . 
+#  --------------------------- Property 26------------------------- 
+:generated rdf:type owl:ObjectProperty; 
+           owl:inverseOf :wasGeneratedBy ;
+           rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+           rdfs:label "generated"@IRI-based; 
+           rdfs:label "generated"@en; 
+           rdfs:domain :Activity;
+           rdfs:range :Entity . 
+#  --------------------------- Property 27------------------------- 
+:actedOnBehalfOf rdf:type owl:ObjectProperty ;
+                 rdfs:comment "An object property to express the accountability of an agent towards another agent. The subordinate agent acted on behalf of the responsible agent in an actual activity. " ;
+                 rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                 rdfs:label "actedOnBehalfOf"@IRI-based; 
+                 rdfs:label "actedOnBehalfOf"@en; 
+                 rdfs:domain :Agent;
+                 rdfs:range :Agent . 
+#  --------------------------- Property 28------------------------- 
+:wasGeneratedBy rdf:type owl:ObjectProperty; 
+                owl:inverseOf :generated ;
+                rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                rdfs:label "wasGeneratedBy"@IRI-based; 
+                rdfs:label "wasGeneratedBy"@en; 
+                rdfs:domain :Entity;
+                rdfs:range :Activity . 
+#  --------------------------- Property 29------------------------- 
+:hadMember rdf:type owl:ObjectProperty ;
+           rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+           rdfs:label "hadMember"@IRI-based; 
+           rdfs:label "hadMember"@en; 
+           rdfs:domain :Collection;
+           rdfs:range :Entity . 
+#  --------------------------- Property 30------------------------- 
+:wasAttributedTo rdf:type owl:ObjectProperty ;
+                 rdfs:comment "Attribution is the ascribing of an entity to an agent." ;
+                 rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                 rdfs:label "wasAttributedTo"@IRI-based; 
+                 rdfs:label "wasAttributedTo"@en; 
+                 rdfs:domain :Entity;
+                 rdfs:range :Agent . 
+#  --------------------------- Property 31------------------------- 
+:qualifiedRevision rdf:type owl:ObjectProperty ;
+                   rdfs:comment "If this Entity prov:wasRevisionOf Entity :e, then it can qualify how it was revised using prov:qualifiedRevision [ a prov:Revision;  prov:entity :e; :foo :bar ]." ;
+                   rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                   rdfs:label "qualifiedRevision"@IRI-based; 
+                   rdfs:label "qualifiedRevision"@en; 
+                   rdfs:domain :Entity;
+                   rdfs:range :Revision . 
+#  --------------------------- Property 32------------------------- 
+:qualifiedPrimarySource rdf:type owl:ObjectProperty ;
+                        rdfs:comment "If this Entity prov:hadPrimarySource Entity :e, then it can qualify how using prov:qualifiedPrimarySource [ a prov:PrimarySource; prov:entity :e; :foo :bar ]." ;
+                        rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                        rdfs:label "qualifiedPrimarySource"@IRI-based; 
+                        rdfs:label "qualifiedPrimarySource"@en; 
+                        rdfs:domain :Entity;
+                        rdfs:range :PrimarySource . 
+#  --------------------------- Property 33------------------------- 
+:qualifiedInvalidation rdf:type owl:ObjectProperty ;
+                       rdfs:comment "If this Entity prov:wasInvalidatedBy Activity :a, then it can qualify how it was invalidated using prov:qualifiedInvalidation [ a prov:Invalidation;  prov:activity :a; :foo :bar ]." ;
+                       rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                       rdfs:label "qualifiedInvalidation"@IRI-based; 
+                       rdfs:label "qualifiedInvalidation"@en; 
+                       rdfs:domain :Entity;
+                       rdfs:range :Invalidation . 
+#  --------------------------- Property 34------------------------- 
+:agent rdf:type owl:ObjectProperty ;
+       rdfs:label "agent"@en; 
+       rdfs:domain :Association;
+       rdfs:range :Agent . 
+
+
+
+:hadRole rdf:type owl:ObjectProperty ;
+		rdfs:label "hadRole"@en;
+		rdfs:domain [
+                     rdf:type    owl:Class ;
+                     owl:unionOf (
+                                     :Association
+									 :InstantaneousEvent
+                                 )
+                 ] ;
+		 rdfs:range :Role .
+
+:hadActivity rdf:type owl:ObjectProperty ;
+		rdfs:label "hadActivity"@en;
+		rdfs:domain [
+                     rdf:type    owl:Class ;
+                     owl:unionOf (
+                                     :Start
+									 :End
+									 :Delegation
+									 :Derivation
+                                 )
+                ] ;
+		rdfs:range :Activity .
+
+###  Class Definitions (Number of Classes) 20 ###
+#  --------------------------- Class  0------------------------- 
+:Activity rdf:type owl:Class; 
+          rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+          rdfs:label "Activity"@IRI-based; 
+          rdfs:label "Activity"@en . 
+#  --------------------------- Class  1------------------------- 
+:InstantaneousEvent rdf:type owl:Class; 
+                    rdfs:comment "An instantaneous event, or event for short, happens in the world and marks a change in the world, in its activities and in its entities. The term 'event' is commonly used in process algebra with a similar meaning. Events represent communications or interactions; they are assumed to be atomic and instantaneous." ;
+                    rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                    rdfs:label "InstantaneousEvent"@IRI-based; 
+                    rdfs:label "InstantaneousEvent"@en . 
+#  --------------------------- Class  2------------------------- 
+:Entity rdf:type owl:Class; 
+        rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+        rdfs:label "Entity"@IRI-based; 
+        rdfs:label "Entity"@en . 
+#  --------------------------- Class  3------------------------- 
+:Person rdf:type owl:Class; 
+        rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+        rdfs:subClassOf :Agent ;
+        rdfs:label "Person"@IRI-based; 
+        rdfs:label "Person"@en . 
+#  --------------------------- Class  4------------------------- 
+:Association rdf:type owl:Class; 
+             rdfs:comment "An instance of prov:Association provides additional descriptions about the binary prov:wasAssociatedWith relation from an prov:Activity to some prov:Agent that had some responsiblity for it. For example, :baking prov:wasAssociatedWith :baker; prov:qualifiedAssociation [ a prov:Association; prov:agent :baker; :foo :bar ]." ;
+             rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+             rdfs:label "Association"@IRI-based; 
+             rdfs:label "Association"@en . 
+#  --------------------------- Class  5------------------------- 
+:Generation rdf:type owl:Class; 
+            rdfs:comment "An instance of prov:Generation provides additional descriptions about the binary prov:wasGeneratedBy relation from a generated prov:Entity to the prov:Activity that generated it. For example, :cake prov:wasGeneratedBy :baking; prov:qualifiedGeneration [ a prov:Generation; prov:activity :baking; :foo :bar ]." ;
+            rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+            rdfs:subClassOf :InstantaneousEvent ;
+            rdfs:label "Generation"@IRI-based; 
+            rdfs:label "Generation"@en . 
+#  --------------------------- Class  6------------------------- 
+:EmptyCollection rdf:type owl:Class; 
+                 rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+                 rdfs:subClassOf :Collection ;
+                 rdfs:label "EmptyCollection"@IRI-based; 
+                 rdfs:label "EmptyCollection"@en . 
+#  --------------------------- Class  7------------------------- 
+:Agent rdf:type owl:Class; 
+       rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+       rdfs:label "Agent"@IRI-based; 
+       rdfs:label "Agent"@en . 
+#  --------------------------- Class  8------------------------- 
+:SoftwareAgent rdf:type owl:Class; 
+               rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+               rdfs:subClassOf :Agent ;
+               rdfs:label "SoftwareAgent"@IRI-based; 
+               rdfs:label "SoftwareAgent"@en . 
+#  --------------------------- Class  9------------------------- 
+:Collection rdf:type owl:Class; 
+            rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+            rdfs:subClassOf :Entity ;
+            rdfs:label "Collection"@IRI-based; 
+            rdfs:label "Collection"@en . 
+#  --------------------------- Class  10------------------------- 
+:Invalidation rdf:type owl:Class; 
+              rdfs:comment "An instance of prov:Invalidation provides additional descriptions about the binary prov:wasInvalidatedBy relation from an invalidated prov:Entity to the prov:Activity that invalidated it. For example, :uncracked_egg prov:wasInvalidatedBy :baking; prov:qualifiedInvalidation [ a prov:Invalidation; prov:activity :baking; :foo :bar ]." ;
+              rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+              rdfs:subClassOf :InstantaneousEvent ;
+              rdfs:label "Invalidation"@IRI-based; 
+              rdfs:label "Invalidation"@en . 
+#  --------------------------- Class  11------------------------- 
+:Derivation rdf:type owl:Class; 
+            rdfs:comment "An instance of prov:Derivation provides additional descriptions about the binary prov:wasDerivedFrom relation from some derived prov:Entity to another prov:Entity from which it was derived. For example, :chewed_bubble_gum prov:wasDerivedFrom :unwrapped_bubble_gum; prov:qualifiedDerivation [ a prov:Derivation; prov:entity :unwrapped_bubble_gum; :foo :bar ]." ;
+            rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+            rdfs:label "Derivation"@IRI-based; 
+            rdfs:label "Derivation"@en . 
+#  --------------------------- Class  12------------------------- 
+:Delegation rdf:type owl:Class; 
+            rdfs:comment "An instance of prov:Delegation provides additional descriptions about the binary prov:actedOnBehalfOf relation from a performing prov:Agent to some prov:Agent for whom it was performed. For example, :mixing prov:wasAssociatedWith :toddler . :toddler prov:actedOnBehalfOf :mother; prov:qualifiedDelegation [ a prov:Delegation; prov:entity :mother; :foo :bar ]." ;
+            rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+            rdfs:label "Delegation"@IRI-based; 
+            rdfs:label "Delegation"@en . 
+#  --------------------------- Class  13------------------------- 
+:PrimarySource rdf:type owl:Class; 
+               rdfs:comment "An instance of prov:PrimarySource provides additional descriptions about the binary prov:hadPrimarySource relation from some secondary prov:Entity to an earlier, primary prov:Entity. For example, :blog prov:hadPrimarySource :newsArticle; prov:qualifiedPrimarySource [ a prov:PrimarySource; prov:entity :newsArticle; :foo :bar ] ." ;
+               rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+               rdfs:subClassOf :Derivation ;
+               rdfs:label "PrimarySource"@IRI-based; 
+               rdfs:label "PrimarySource"@en . 
+#  --------------------------- Class  14------------------------- 
+:Start rdf:type owl:Class; 
+       rdfs:comment "An instance of prov:Start provides additional descriptions about the binary prov:wasStartedBy relation from some started prov:Activity to an prov:Entity that started it. For example, :foot_race prov:wasStartedBy :bang; prov:qualifiedStart [ a prov:Start; prov:entity :bang; :foo :bar; prov:atTime '2012-03-09T08:05:08-05:00'^^xsd:dateTime ] ." ;
+       rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+       rdfs:subClassOf :InstantaneousEvent ;
+       rdfs:label "Start"@IRI-based; 
+       rdfs:label "Start"@en . 
+#  --------------------------- Class  15------------------------- 
+:Revision rdf:type owl:Class; 
+          rdfs:comment "An instance of prov:Revision provides additional descriptions about the binary prov:wasRevisionOf relation from some newer prov:Entity to an earlier prov:Entity. For example, :draft_2 prov:wasRevisionOf :draft_1; prov:qualifiedRevision [ a prov:Revision; prov:entity :draft_1; :foo :bar ]." ;
+          rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+          rdfs:subClassOf :Derivation ;
+          rdfs:label "Revision"@IRI-based; 
+          rdfs:label "Revision"@en . 
+#  --------------------------- Class  16------------------------- 
+:Role rdf:type owl:Class; 
+      rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+      rdfs:label "Role"@IRI-based; 
+      rdfs:label "Role"@en . 
+#  --------------------------- Class  17------------------------- 
+:End rdf:type owl:Class; 
+     rdfs:comment "An instance of prov:End provides additional descriptions about the binary prov:wasEndedBy relation from some ended prov:Activity to an prov:Entity that ended it. For example, :ball_game prov:wasEndedBy :buzzer; prov:qualifiedEnd [ a prov:End; prov:entity :buzzer; :foo :bar; prov:atTime '2012-03-09T08:05:08-05:00'^^xsd:dateTime ]." ;
+     rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+     rdfs:subClassOf :InstantaneousEvent ;
+     rdfs:label "End"@IRI-based; 
+     rdfs:label "End"@en . 
+#  --------------------------- Class  18------------------------- 
+:Usage rdf:type owl:Class; 
+       rdfs:comment "An instance of prov:Usage provides additional descriptions about the binary prov:used relation from some prov:Activity to an prov:Entity that it used. For example, :keynote prov:used :podium; prov:qualifiedUsage [ a prov:Usage; prov:entity :podium; :foo :bar ]." ;
+       rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+       rdfs:subClassOf :InstantaneousEvent ;
+       rdfs:label "Usage"@IRI-based; 
+       rdfs:label "Usage"@en . 
+#  --------------------------- Class  19------------------------- 
+:Organization rdf:type owl:Class; 
+              rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+              rdfs:subClassOf :Agent ;
+              rdfs:label "Organization"@IRI-based; 
+              rdfs:label "Organization"@en . 
