@@ -126,15 +126,6 @@
                 rdfs:label "wasDerivedFrom"@en; 
                 rdfs:domain :Entity;
                 rdfs:range :Entity . 
-#  --------------------------- Property 14------------------------- 
-:wasQuotedFrom rdf:type owl:ObjectProperty ;
-               rdfs:comment "An entity is derived from an original entity by copying, or 'quoting', some or all of it." ;
-              rdfs:subPropertyOf :wasDerivedFrom;
-               rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
-               rdfs:label "wasQuotedFrom"@IRI-based; 
-               rdfs:label "wasQuotedFrom"@en; 
-               rdfs:domain :Entity;
-               rdfs:range :Entity . 
 #  --------------------------- Property 15------------------------- 
 :atTime rdf:type owl:DatatypeProperty ;
         rdfs:comment "The time at which an InstantaneousEvent occurred, in the form of xsd:dateTime." ;
